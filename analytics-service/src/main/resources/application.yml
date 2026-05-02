@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/threat_intel?createDatabaseIfNotExist=true
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  application:
+    name: analytics-service
+server:
+  port: 8085
+
+logging:
+  level:
+    com.threatintel: DEBUG
+    org.hibernate.SQL: DEBUG
+

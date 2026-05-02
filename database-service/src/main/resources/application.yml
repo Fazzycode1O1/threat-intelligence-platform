@@ -1,0 +1,29 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: database-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.threatintel.shared.*"
+  datasource:
+    url: jdbc:mysql://localhost:3306/threat_intel?createDatabaseIfNotExist=true
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  application:
+    name: database-service
+server:
+  port: 8084
+
+logging:
+  level:
+    com.threatintel: DEBUG
+    org.springframework.kafka: INFO
+    org.hibernate.SQL: DEBUG
